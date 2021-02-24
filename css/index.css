@@ -1,0 +1,181 @@
+*{
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+body{
+	margin: 0;
+}
+h1,h2,h3{
+    margin-bottom: 12px;
+    color: #333;
+    margin-top: 12px;
+}
+nav{
+	box-shadow: 0px 0px 8px 6px #f6f6f6;
+}
+.cover{
+	padding: 12px 18px;
+	display: block;
+	overflow: hidden;
+}
+nav img{
+	width: 100px;
+	float: left;
+    object-fit: contain;
+}
+#nav_links{
+	float: right;
+	text-align: right;
+}
+#nav_links a{
+	display: inline-block;
+    padding: 11.5px 15px;
+    text-decoration: none;
+    color: #333;
+}
+#nav_links a.active{
+	font-weight: bold;
+}
+a:hover{
+	color: #237ac1!important;
+}
+.main{
+	height: calc(100vh - 66px);
+}
+.main>div{
+	width: 30%;
+	float: left;
+}
+#complaintDiv{
+	padding: 12px 18px;
+    box-shadow: 0px 0px 8px 6px #f6f6f6;
+    height: 100%;
+}
+#complaintOption{
+	width: 50px;
+}
+#complaintOption span{
+	padding: 8px;
+    background: #237ac1;
+    font-size: 18px;
+    color: #fff;
+    display: inline-block;
+    width: 36px;
+    text-align: center;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+#complaintOption span:hover{
+	background: #18588c;
+}
+#complaintDiv p{
+    display: inline-block;
+    margin: 8px 0px 8px 12px;
+    color: #333;
+}
+#complaintDiv div span{
+	float: left;
+    background: #237ac1;
+    color: #fff;
+    padding: 8px;
+    font-weight: bold;
+}
+#complaintDiv h2 span{
+	background: transparent;
+	float: right;
+	color: #333;
+	font-weight: normal;
+	cursor: pointer;
+}
+#complaintDiv h2 span:hover{
+	color: #237ac1;
+}
+#complaintDiv div{
+	float: left;
+	width: 100%;
+	padding: 12px 0px;
+	border-radius: 5px;
+	transition: all 0.2s;
+}
+#complaintDiv div div{
+	cursor: pointer;
+}
+#complaintDiv div div:hover{
+	background: #f3f3f3;
+	padding-left: 12px;
+}
+#complaintDiv div div.active{
+    background: #f3f3f3;
+    padding-left: 12px;
+}
+.modal{
+	width: 100%!important;
+	height: 100vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: none;
+}
+.modal .shadow{
+	width: 100%;
+	height: 100vh;
+	background: rgb(51 51 51 / 0.1);
+}
+.data{
+    transform: translate(-50%,-50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: auto;
+    display: inline-block;
+    box-shadow: 0px 0px 8px 4px #dedede;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px 50px;
+    height: 500px;
+}
+#insertModal .data,#updateModal .data{
+    width: 400px;
+    height: auto;
+    padding: 30px;
+}
+input,textarea{
+    border: 1px solid #dedede;
+    padding: 12px 18px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 12px;
+}
+button{
+    background: #237ac1;
+    border: 0;
+    color: #fff;
+    padding: 12px 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    outline: 0;
+    float: right;
+}
+textarea{
+	height: 200px;
+}
+button:hover{
+	background: #18588c;
+}
+#complaintJson .data{
+    overflow-y: scroll;
+
+}
+#complaintDiv i{
+	float: right;
+}
+.fa-exclamation{
+    color: #ffffff;
+    background: #dd5757;
+    padding: 5px 5px;
+    margin: 3.5px 0;
+}
+.fa-check{
+    padding: 6.5px 0 0 0;
+    color: #35be35;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Infosys Services Complaints</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/51f2066e49.js" crossorigin="anonymous"></script>
+
+	<script src="js/index.js"></script>
+
+</head>
+<script>
+	$(document).ready(function(){
+		fetchNew();
+		$("#complaintDiv span").click(function(){
+			$("#complaintJson").show();
+
+		});	
+		$("#complaintJson .shadow").click(function(){
+			if(!$(event.target).closest("#complaintJson .data").length){
+				$("#complaintJson").hide();
+			}
+			
+		});	
+		$("#insertModal .shadow").click(function(){
+			if(!$(event.target).closest("#insertModal .data").length){
+				$("#insertModal").hide();
+			}
+			
+		});	
+
+		$("#updateModal .shadow").click(function(){
+			if(!$(event.target).closest("#updateModal .data").length){
+				$("#updateModal").hide();
+			}
+			
+		});	
+
+		$(document).on("click","#complaintDiv div div",function(){
+			$("#complaintDiv div div").removeClass("active");
+			$(this).addClass("active");
+		});
+		$("#insert").click(function(){
+			$("#insertModal").show();			
+
+		});
+		$("#insertButton").click(function(){
+			var complaintDescription = $("#insertModal .description").val();
+			var orderNumber = $("#insertModal .orderNumber").val();
+			var productCode = $("#insertModal .productCode").val();
+			if(complaintDescription == null || orderNumber == null ||  productCode == null){
+				alert("Empty Fields.");
+			}
+			else{
+				postComplaint(complaintDescription,orderNumber,productCode);	
+			}
+			console.log(complaintDescription);
+			console.log(orderNumber);
+			console.log(productCode);
+		});
+		$("#update").click(function(){
+			$("#updateModal").show();			
+		});
+		$("#updateButton").click(function(){
+			var complaintDescription = $("#updateModal .description").val();
+			var complaintNumber = $("#complaintDiv input").val();
+			if(complaintDescription == null ){
+				alert("Empty Fields.");
+			}
+			else{
+				patchComplaint(complaintDescription,complaintNumber);	
+			}
+		});
+		$("#delete").click(function(){
+			var complaintNumber = $("#complaintDiv input").val();
+			let result = confirm('Are you sure you want to cancel the complaint it will be deleted?');
+			if(result){
+				deleteComplaint(complaintNumber);
+			}
+
+		});
+		$("#resolve").click(function(){
+			var complaintNumber = $("#complaintDiv input").val();
+			let result = confirm('Are you sure you want to resolve the complaint?');
+			if(result){
+				resolveComplaint(complaintNumber);
+			}
+		});
+
+	});
+</script>
+<body>
+	<nav class="cover">
+		<img src="images/infosys.png">
+		<div id="nav_links">
+			<a href="#" class="active">Complaints</a>
+		</div>
+	</nav>
+	<div class="cover main">
+		<div id="complaintDiv">
+			<h2>Complaints <span>json</span></h2>
+			<div>
+				
+			</div>			
+		</div>
+		<div id="complaintJson" class="modal">
+			<div class="shadow">
+				
+			</div>
+			<div class="data">
+				<pre></pre>
+			</div>
+		</div>
+		<div id="complaintOption">
+			<span id="insert"><i class="fas fa-plus"></i></span>
+			<span id="update"><i class="fas fa-pen"></i></span>
+			<span id="resolve"><i class="fas fa-wrench"></i></span>
+			<span id="delete"><i class="fas fa-trash"></i></span>
+		</div>
+	</div>
+	<div id="insertModal" class="modal">
+		<div class="shadow">
+			
+		</div>
+		<div class="data">
+			<input type="text" name="orderNumber" placeholder="Enter Order Number" class="orderNumber">
+			<input type="text" name="productCode" placeholder="Enter Product Code" class="productCode">
+			<textarea class="description" placeholder="Enter description"></textarea>
+			<button id="insertButton">Insert</button>
+		</div>
+	</div>
+	<div id="updateModal" class="modal">
+		<div class="shadow">
+			
+		</div>
+		<div class="data">
+			<textarea placeholder="Enter description" class="description"></textarea>
+			<button id="updateButton">Update</button>
+
+		</div>
+	</div>
+
+</body>
+</html>
